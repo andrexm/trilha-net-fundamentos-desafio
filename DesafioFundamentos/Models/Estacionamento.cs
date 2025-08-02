@@ -16,10 +16,10 @@ namespace DesafioFundamentos.Models
         {
             string placa = "";
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            while (placa == "")
+            do
             {
                 placa = Console.ReadLine();
-            }
+            } while (placa == "");
             veiculos.Add(placa.ToUpper());
         }
 
@@ -28,10 +28,10 @@ namespace DesafioFundamentos.Models
             string placa = "";
             
             Console.WriteLine("Digite a placa do veículo para remover:");
-            while (placa == "")
+            do
             {
                 placa = Console.ReadLine();
-            }
+            } while (placa == "");
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x == placa.ToUpper()))
@@ -44,10 +44,13 @@ namespace DesafioFundamentos.Models
 
                 // Espera por uma entrada não vazia
                 string temp = "";
-                do { temp = Console.ReadLine(); } while (temp == "");
+                do
+                {
+                    temp = Console.ReadLine();
+                } while (temp == "");
 
                 horas = Convert.ToInt32(temp);
-                veiculos.Remove(placa);
+                veiculos.Remove(placa.ToUpper());
                 valorTotal = precoInicial + precoPorHora * horas;
 
                 Console.WriteLine($"O veículo {placa.ToUpper()} foi removido e o preço total foi de: R$ {valorTotal}");
